@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link
+		href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap"
+		rel="stylesheet">
+
+	<title>JobList</title>
+
+	<!-- Bootstrap core CSS -->
+	<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+	<!-- Additional CSS Files -->
+	<link rel="stylesheet" href="assets/css/fontawesome.css">
+	<link rel="stylesheet" href="assets/css/templatemo-plot-listing.css">
+	<link rel="stylesheet" href="assets/css/animated.css">
+	<link rel="stylesheet" href="assets/css/owl.css">
+	<!--
+
+TemplateMo 564 Plot Listing
+
+https://templatemo.com/tm-564-plot-listing
+
+-->
+</head>
+
+<body>
+
+	<!-- ***** Preloader Start ***** -->
+	<div id="js-preloader" class="js-preloader">
+		<div class="preloader-inner">
+			<span class="dot"></span>
+			<div class="dots">
+				<span></span>
+				<span></span>
+				<span></span>
+			</div>
+		</div>
+	</div>
+	<!-- ***** Preloader End ***** -->
+
+	<!-- ***** Header Area Start ***** -->
+	<header class="header-area header-sticky wow slideInDown" data-wow-duration="0.75s" data-wow-delay="0s">
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<nav class="main-nav">
+						<!-- ***** Logo Start ***** -->
+						<a href="index.html" class="logo">
+						</a>
+						<!-- ***** Logo End ***** -->
+						<!-- ***** Menu Start ***** -->
+						<ul class="nav">
+							<li><a href="index.html" class="active">Home</a></li>
+							<li>
+								<div class="main-white-button"><a href="#"><i class="fa fa-plus"></i> Add Your
+										Listing</a></div>
+							</li>
+						</ul>
+						<a class='menu-trigger'>
+							<span>Menu</span>
+						</a>
+						<!-- ***** Menu End ***** -->
+					</nav>
+				</div>
+			</div>
+		</div>
+	</header>
+	<!-- ***** Header Area End ***** -->
+
+	<div class="main-banner">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="top-text header-text">
+						<h6>Over 36,500+ Active Listings</h6>
+						<h2>Find Your Dream Job</h2>
+					</div>
+				</div>
+				<div class="col-lg-12">
+					<form id="search-form">
+						<div class="row">
+							<div class="col-lg-3 align-self-center">
+								<fieldset>
+									<select id="consultant">
+									</select>
+								</fieldset>
+							</div>
+							<div class="col-lg-3 align-self-center">
+								<fieldset>
+									<select id="specialization">
+										<option selected>Select Specialization</option>
+										<option value="Financial">Financial</option>
+										<option value="Education">Education</option>
+										<option value="Marketing">Marketing</option>
+										<option value="Software">Software</option>
+									</select>
+								</fieldset>
+							</div>
+							<div class="col-lg-3 align-self-center">
+								<fieldset>
+									<select id="country">
+										<option selected>Select Country</option>
+										<option value="Sri Lanka">Sri Lanka</option>
+										<option value="USA">USA</option>
+										<option value="UK">UK</option>
+										<option value="France">France</option>
+									</select>
+								</fieldset>
+							</div>
+							<div class="col-lg-3">
+								<fieldset>
+									<button id="find" class="main-button"><i class="fa fa-search"></i> Check Available Jobs</button>
+								</fieldset>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<footer>
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-4">
+					<div class="about">
+						<div class="logo">
+							<img src="assets/images/logo1.png" alt="Plot Listing Template">
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4">
+					<div class="contact-us">
+						<h4>Contact Us</h4>
+						<p>Malwaththa Road, Colombo, Sri Lanka</p>
+						<div class="row">
+							<div class="col-lg-6">
+								<a href="#">011-1234567</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-12">
+					<div class="sub-footer">
+						<p>Copyright © 2021 JobList  Co., Ltd. All Rights Reserved.
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+
+	<!-- Scripts -->
+	<script src="vendor/jquery/jquery.min.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="assets/js/owl-carousel.js"></script>
+	<script src="assets/js/animation.js"></script>
+	<script src="assets/js/imagesloaded.js"></script>
+	<script src="assets/js/custom.js"></script>
+	<script>
+		$(document).ready(function(){
+			$.get("http://127.0.0.1:8080/getConsultants", function(data, status){
+				let consultants = "<option selected>Select Consultant</option>";
+				data.forEach((consultant) =>{
+					consultants += '<option value="'+consultant.id+'">'+consultant.name+'</option>';
+				});
+				$("#consultant").html(consultants);
+			});
+		});
+
+		$("#find").click(function(){
+			$("#search-form").submit(false);
+			let consultant = $("#consultant").val();
+			let specialization = $("#specialization").val();
+			let country = $("#country").val();
+			$.post('http://127.0.0.1:8080/findJobs', {
+				consultant: consultant,
+				specialization: specialization,
+				country: country
+			}, function(response){
+				localStorage.setItem('jobs', JSON.stringify(response));
+				localStorage.setItem('consultant', $("#consultant option:selected").text());
+				window.location.href = "listing.html";
+			});
+		  });
+	</script>
+
+</body>
+
+</html>
