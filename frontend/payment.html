@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link
+		href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap"
+		rel="stylesheet">
+
+	<title>JobList</title>
+
+	<!-- Bootstrap core CSS -->
+	<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+
+	<!-- Additional CSS Files -->
+	<link rel="stylesheet" href="assets/css/fontawesome.css">
+	<link rel="stylesheet" href="assets/css/templatemo-plot-listing.css">
+	<link rel="stylesheet" href="assets/css/animated.css">
+	<link rel="stylesheet" href="assets/css/owl.css">
+	<!--
+
+TemplateMo 564 Plot Listing
+
+https://templatemo.com/tm-564-plot-listing
+
+-->
+</head>
+
+<body>
+
+	<!-- ***** Preloader Start ***** -->
+	<div id="js-preloader" class="js-preloader">
+		<div class="preloader-inner">
+			<span class="dot"></span>
+			<div class="dots">
+				<span></span>
+				<span></span>
+				<span></span>
+			</div>
+		</div>
+	</div>
+	<!-- ***** Preloader End ***** -->
+
+	<!-- ***** Header Area Start ***** -->
+	<header class="header-area header-sticky wow slideInDown" data-wow-duration="0.75s" data-wow-delay="0s">
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<nav class="main-nav">
+						<!-- ***** Logo Start ***** -->
+						<a href="index.html" class="logo">
+						</a>
+						<!-- ***** Logo End ***** -->
+						<!-- ***** Menu Start ***** -->
+						<ul class="nav">
+							<li><a href="index.html">Home</a></li>
+							<li>
+								<div class="main-white-button"><a href="#"><i class="fa fa-plus"></i> Add Your
+										Listing</a></div>
+							</li>
+						</ul>
+						<a class='menu-trigger'>
+							<span>Menu</span>
+						</a>
+						<!-- ***** Menu End ***** -->
+					</nav>
+				</div>
+			</div>
+		</div>
+	</header>
+	<!-- ***** Header Area End ***** -->
+
+	<div class="page-heading">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8">
+					<div class="top-text header-text">
+						<h6>Fill payment details</h6>
+						<h2>Payment</h2>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="contact-page">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="inner-content">
+						<div class="row">
+							<div class="col-lg-12 align-self-center">
+								<form id="contact" action="" method="post" enctype="multipart/form-data"><br>
+									<div class="row"><br>
+										<table>
+											<tr>
+												<th>Your Name :</th>
+												<td><input type="text" name="name" id="name" placeholder="Your Name"
+														autocomplete="on" readonly></td>
+											</tr>
+											<input type="hidden" name="email" id="email" readonly>
+											<tr>
+												<th>Card Number :</th>
+												<td><input type="text" name="cardNumber" id="cardNumber" placeholder="Card Number"
+														autocomplete="off" required>
+												</td>
+											</tr>
+											
+											<tr>
+												<th>CVC :</th>
+												<td><input type="text" name="cvc" id="cvc" placeholder="CVC"
+														autocomplete="off" required></td>
+											</tr>
+
+											<tr>
+												<th>Expire Date :</th>
+												<td><input type="date" name="expireDate" id="expireDate" placeholder="Expire Date"
+														autocomplete="off" required></td>
+											</tr>
+										</table>
+										<div class="col-lg-12">
+											<fieldset>
+												<button type="submit" id="submit" class="main-button "><i
+														class="fa fa-credit-card"></i> Pay $30</button>
+											</fieldset>
+										</div>
+										<br><br><br>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<footer>
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-4">
+					<div class="about">
+						<div class="logo">
+							<img src="assets/images/logo1.png" alt="Plot Listing Template">
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4">
+					<div class="contact-us">
+						<h4>Contact Us</h4>
+						<p>Malwaththa Road, Colombo, Sri Lanka</p>
+						<div class="row">
+							<div class="col-lg-6">
+								<a href="#">011-1234567</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-12">
+					<div class="sub-footer">
+						<p>Copyright © 2021 JobList  Co., Ltd. All Rights Reserved.
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+
+	<!-- Scripts -->
+	<script src="vendor/jquery/jquery.min.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="assets/js/owl-carousel.js"></script>
+	<script src="assets/js/animation.js"></script>
+	<script src="assets/js/imagesloaded.js"></script>
+	<script src="assets/js/custom.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+	<script>
+		$(document).ready(function () {
+			var name = localStorage.getItem('name');
+			var email = localStorage.getItem('email');
+			$("#name").val(name);
+			$("#email").val(email);
+		});
+
+		$(function() {
+			$('button[type=submit]').click(function (event) {
+				event.preventDefault();
+
+				let notValid = $("#cardNumber").val() == "" ||
+						   $("#cvc").val() == "" ||
+						   $("#expireDate").val() == "";
+				if(notValid){
+					Swal.fire('Please fill all details', '', 'warning');
+					return;
+				}
+
+				// retrieve form element
+				var form = this.form;
+				// prepare data
+				var data = new FormData(form);
+				// get url
+				var url = 'http://127.0.0.1:8080/pay';
+
+				// send request
+				$.ajax({
+					type: 'POST',
+					url: url,
+					data: data,
+					processData: false,
+					contentType: false,
+					success: function(response){
+						Swal.fire(response, '', 'success');
+						localStorage.setItem('jobs', "");
+						localStorage.setItem('consultant', "");
+						localStorage.setItem('jobId', "");
+						localStorage.setItem('jobTitle', "");
+						localStorage.setItem('email', "");
+						localStorage.setItem('name', "");
+						setInterval(function(){ window.location.href = "index.html"; }, 2000);
+					},
+					error: function(){
+						Swal.fire('Failure...', '', 'error');
+					}
+				});
+			});
+		});
+	</script>
+
+</body>
+
+</html>
