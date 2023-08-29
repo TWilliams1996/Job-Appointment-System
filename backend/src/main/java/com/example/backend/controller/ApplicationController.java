@@ -53,9 +53,14 @@ public class ApplicationController {
         consultant3.setName("Hale");
         consultant3.setCountry("USA");
 
+        Consultant consultant4 = new Consultant();
+        consultant3.setName("Nick");
+        consultant3.setCountry("New Zealand");
+
         consultantRepository.save(consultant1);
         consultantRepository.save(consultant2);
         consultantRepository.save(consultant3);
+        consultantRepository.save(consultant4);
 
 
         Job job1 = new Job();
@@ -86,10 +91,18 @@ public class ApplicationController {
         job4.setCountry("UK");
         job4.setSpecialization("Education");
 
+        Job job5 = new Job();
+        job4.setTitle(".NET Engineer");
+        job4.setDescription("Lead of the Microsoft .NET Team");
+        job4.setConsultant(consultant4);
+        job4.setCountry("New Zealand");
+        job4.setSpecialization(".Net BackEnd Developing With Dev Ops");
+
         jobRepository.save(job1);
         jobRepository.save(job2);
         jobRepository.save(job3);
         jobRepository.save(job4);
+        jobRepository.save(job5);
 
 
 //        JobSeeker jobSeeker = new JobSeeker();
