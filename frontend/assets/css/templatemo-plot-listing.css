@@ -1234,11 +1234,11 @@ form#contact input {
   height: 46px;
   border-radius: 7px;
   background-color: transparent;
-  border: 1px solid #8d99af;
+  border: 1px solid #151618;
   outline: none;
   font-size: 15px;
-  font-weight: 300;
-  color: #8d99af;
+  font-weight: 500;
+  color: #0d0e11;
   padding: 0px 15px;
   margin-bottom: 30px;
 }
