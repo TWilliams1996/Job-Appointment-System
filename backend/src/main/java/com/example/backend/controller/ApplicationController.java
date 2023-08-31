@@ -111,7 +111,7 @@ public class ApplicationController {
     public String apply(@ModelAttribute ApplicationDTO applicationDTO) throws IOException {
         System.out.println(applicationDTO.getName());
         JobSeeker jobSeeker = jobSeekerService.saveJobSeeker(applicationDTO);
-        applicationService.saveApplication(jobRepository.findById(Long.parseLong(applicationDTO.getJobId())).get(), jobSeeker, applicationDTO.getAppointmentDate());
+        applicationService.saveApplication(jobRepository.findById(Long.parseLong(applicationDTO.getJobId())).get(), jobSeeker, applicationDTO);
         return "Application saved successfully";
     }
 }
