@@ -250,7 +250,18 @@ https://templatemo.com/tm-564-plot-listing
 						localStorage.setItem('consultant', "");
 						localStorage.setItem('jobId', "");
 						localStorage.setItem('jobTitle', "");
-						setInterval(function(){ window.location.href = "index.html"; }, 2000);
+						Swal.fire({
+							title: response,
+							text: "",
+							icon: 'success',
+							showCancelButton: false,
+							confirmButtonColor: '#3085d6',
+							confirmButtonText: 'Ok'
+							}).then((result) => {
+							if (result.isConfirmed) {
+								location = "index.html"
+							}
+						});
 					},
 					error: function(){
 						Swal.fire('Failure...', '', 'error');
